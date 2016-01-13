@@ -1,0 +1,14 @@
+extends /_layout
+
+block content
+  .container
+    .row
+      .col-sm-8.col-sm-offset-2
+        h1 Success!
+        p #{file.substr(file.indexOf('-') + 1)} has been sent to the printer
+        hr
+        br
+        h2 Want to View or Print Again?
+        br
+        a.btn.btn-primary(href='/file?name=#{file}') Back to File Page
+        

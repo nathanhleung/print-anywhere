@@ -1,0 +1,19 @@
+{
+  "name": "print-anywhere",
+  "version": "1.0.0",
+  "description": "Print double sided from anywhere!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nathan Leung",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "ipp": "0.0.8",
+    "jade": "^1.11.0",
+    "morgan": "^1.6.1",
+    "multer": "^1.1.0"
+  }
+}

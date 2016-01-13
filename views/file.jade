@@ -1,0 +1,54 @@
+extends /_layout
+
+block content
+  .container
+    .row
+      .col-sm-8.col-sm-offset-2
+        h1 #{file.substr(file.indexOf('-') + 1)}
+        a.btn.btn-primary(href='/uploads/#{file}' target='_blank') View File
+        hr
+        h2 Print File
+        p Double-sided, color
+        form#printForm(method='post' action='/print')
+          input(type='hidden' name='file' value=file)
+          //-
+            .form-group
+              label Color or BW
+              br
+              select(name='colors')
+                option(value='color') Color
+                option(value='grayscale') Grayscale
+            .form-group
+              label Sides per page
+              br
+              select(name='sides')
+                option(value='1') Single-sided
+                option(value='2') Double-sided
+          .form-group
+            button.btn.btn-primary#submitButton(type='submit') Print
+            br
+            br
+            .hidden#patience-message
+              p.help-block.
+                Please be patient - we need to send your file over to
+                the printer, which can take a while for large files
+              h1
+                span#countdown
+                span &nbsp;seconds
+
+block scripts
+  script.
+    'use strict';
+    $(document).ready(() => {
+      let seconds = 30;
+      $('#countdown').html(seconds);
+      function countdown() {
+        seconds = seconds - 1;
+        $('#countdown').html(seconds);
+      }
+      $('#printForm').submit(() => {
+        $('#submitButton').prop('disabled', true);
+        $('#patience-message').removeClass('hidden');
+        window.setInterval(countdown, 1000)
+      });
+    });

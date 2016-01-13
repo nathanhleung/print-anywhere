@@ -1,0 +1,28 @@
+extends /_layout
+
+block content
+  .container
+    .row
+      .col-sm-8.col-sm-offset-2
+        h1 Upload File
+        form#fileForm(method='POST' action='/upload' enctype='multipart/form-data')
+          .form-group
+            label File
+            input(type='file' name='pdf' accept='.pdf')
+          .form-group
+            button.btn.btn-primary#submitButton(type='submit') Upload
+            br
+            br
+            .hidden#patience-message
+              p.help-block.
+                Please be patient - uploads can take a while, especially
+                for larger files
+
+block scripts
+  script.
+    $(document).ready(() => {
+      $('#fileForm').submit(() => {
+        $('#submitButton').prop('disabled', true);
+        $('#patience-message').removeClass('hidden');
+      });
+    });

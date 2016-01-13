@@ -1,0 +1,15 @@
+extends /_layout
+
+block content
+  .container
+    h1 Printer Attributes
+    table.table
+      thead
+        tr
+          th Property
+          th Value
+      tbody
+        each val, key in attributes
+          tr
+            td= key
+            td= val
